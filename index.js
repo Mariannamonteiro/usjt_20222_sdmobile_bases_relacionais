@@ -10,18 +10,15 @@ const client = new Client({
     database: '',
     password: '',
     port:'5432'
+})
 
+app.get('/medicos', async(req, res) => {
+    client.connect()
+    const {rows} = await client.query('SELECT * FROM tb_medico')
+    console.log(rows)
+    res.send('ok')
 
 })
-teste = async() =>{
-    await client.connect()
-    console.log("foi")
-}
-
-
-teste()
-
-
 
 
 
